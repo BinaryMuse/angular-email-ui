@@ -10,3 +10,6 @@ app.controller 'MessagesController', ($scope) ->
 
 app.controller 'ComposeController', ($scope) ->
   $scope.name = 'ComposeController'
+
+app.controller 'MessageController', ($scope, $routeParams) ->
+  $scope.messageId = $routeParams.messageId

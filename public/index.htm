@@ -36,7 +36,7 @@
       </div>
 
       <div ng-repeat='page in navigation.pages'>
-        <a ng-href='{{page.href}}' ng-class='{active: page.name == navigation.current}'>{{page.label}}</a>
+        <a ng-href='{{page.href}}' ng-class='{active: page.name == navigation.current}'>{{page.label}} <span ng-show='navigation.unreadIn(page.name) > 0'>({{navigation.unreadIn(page.name)}})</span></a>
       </div>
     </div>
   </div>

@@ -4,6 +4,11 @@ app.factory 'navigation', ($location) ->
   to: (url) ->
     console.log "WOOO", url
     $location.url url
+  unreadIn: (label) ->
+    switch label
+      when 'inbox' then 14
+      when 'sent' then 0
+      when 'trash' then 0
   current: ''
   pages: [
     {

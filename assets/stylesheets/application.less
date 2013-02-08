@@ -1,3 +1,141 @@
+html, * {
+  font-family: Arial, sans-serif;
+}
+
 body {
-  background-color: cyan;
+  margin: 0;
+  padding: 0;
+}
+
+#topnav {
+  background-color: black;
+  font-weight: bold;
+  padding-left: 15px;
+
+  a {
+    color: #bbb;
+    display: inline-block;
+    text-decoration: none;
+    margin: 5px 10px 5px 0;
+    font-size: 14px;
+  }
+
+  .active {
+    color: white;
+  }
+}
+
+#searchbar {
+  background-color: #f5f5f5;
+  height: 50px;
+  border-bottom: 1px solid #ccc;
+
+  #logo {
+    padding: 5px 5px 5px 15px;
+  }
+
+  #searchbox {
+    vertical-align: top;
+    height: 30px;
+    width: 400px;
+    margin: 10px 0;
+    padding: 5px;
+    font-size: 20px;
+  }
+
+  #searchsubmit {
+    cursor: pointer;
+    color: white;
+    font-size: 14px;
+    background-color: #4d90fe;
+    border-radius: 2px;
+    vertical-align: top;
+    border: 1px solid #3079ed;
+    height: 30px;
+    margin: 10px 0 10px 10px;
+    padding: 0 15px;
+  }
+}
+
+#buttonbar {
+  border-bottom: 1px solid #e5e5e5;
+  padding: 10px 0;
+
+  .lefty {
+    display: inline-block;
+    margin-left: 15px;
+    margin-right: 5px;
+    font-size: 20px;
+    color: #dd4b39;
+    width: 200px;
+  }
+
+  .buttons {
+    display: inline-block;
+
+    button {
+      border-radius: 2px;
+      background-color: #f5f5f5;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      color: #444;
+      height: 30px;
+      font-size: 16px;
+      padding: 0 15px;
+    }
+  }
+}
+
+#mainbar {
+  #navigation {
+    width: 215px;
+    padding-top: 10px;
+
+    .compose-container {
+      text-align: center;
+      padding-bottom: 10px;
+    }
+
+    .compose {
+      cursor: pointer;
+      border-radius: 2px;
+      background-color: #d14836;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      color: white;
+      height: 30px;
+      font-size: 12px;
+      font-weight: bold;
+      padding: 0 15px;
+      width: 125px;
+    }
+
+    a {
+      display: block;
+      border-left: 3px solid transparent;
+      padding: 5px 0 5px 20px;
+      text-decoration: none;
+      color: black;
+
+      &.active {
+        border-left: 3px solid #d14836;
+        color: #d14836;
+      }
+
+      &:hover {
+        background-color: #f5f5f5;
+      }
+    }
+
+    float: left;
+  }
+
+  .main-container {
+    margin-left: -225px;
+    width: 100%;
+    float: right;
+    margin-top: 10px;
+  }
+
+  .main {
+    margin-left: 225px;
+  }
 }

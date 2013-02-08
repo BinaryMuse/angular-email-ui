@@ -1,4 +1,5 @@
 http = require 'http'
+path = require 'path'
 express = require 'express'
 webpack = require 'webpack'
 webpackDev = require 'webpack-dev-middleware'
@@ -27,3 +28,7 @@ app.configure 'development', ->
 
 server.listen app.get('port'), ->
   console.log "Server listening on http://localhost:#{app.get('port')}"
+
+app.get '/*', (req, res) ->
+  indexPage = path.resolve "#{__dirname}/../public/index.htm"
+  res.sendfile indexPage

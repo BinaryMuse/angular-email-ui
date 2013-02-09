@@ -27,3 +27,20 @@ app.factory 'navigation', ($location) ->
       label: 'Trash'
     }
   ]
+
+app.factory 'messages', ->
+  [
+    {
+      id: 1
+      read: false
+      starred: true
+      selected: false
+      from: {
+        name: 'Brandon Tilley'
+        email: 'brandon@brandontilley.com'
+      }
+      subject: 'Here\'s an email!'
+      body: "This is a test. This is only a test. Had this been a real email, it would probably have been spam. Here is some more text to make it not fit."
+      sent: new Date()
+    }
+  ]

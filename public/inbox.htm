@@ -1,1 +1,18 @@
-Inbox // Current controller: {{name}}
+<table width='100%' class='messages'>
+  <tr ng-repeat="message in messages"
+    ng-class='{read: message.read, unread: !message.read, selected: message.selected}'
+    ng-click='navigation.to("/messages/" + message.id)'>
+    <td class='select-cell'>
+      <input type='checkbox' ng-model='message.selected' ng-click='eat($event)'>
+    </td>
+    <td class='star-cell'>
+      <span class='star' ng-class='{lit: message.starred}' ng-click='message.starred = !message.starred; eat($event)'></span>
+    </td>
+    <td class='name-cell'>{{message.from.name}}</td>
+    <td class='subject-cell'>
+      <span class='subject'>{{message.subject}}</span>
+      <span class='preview'>- {{message.body}}</span>
+    </td>
+    <td class='sent-cell'>{{message.sent | date:'medium'}}</td>
+  </tr>
+</table>

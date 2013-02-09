@@ -7,6 +7,17 @@ body {
   padding: 0;
 }
 
+.star {
+  background-image: url('../../public/images/star_empty.png');
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+
+  &.lit {
+    background-image: url('../../public/images/star.png');
+  }
+}
+
 #topnav {
   background-color: black;
   font-weight: bold;
@@ -137,5 +148,125 @@ body {
 
   .main {
     margin-left: 225px;
+  }
+}
+
+table.messages {
+  border-collapse: collapse;
+  table-layout: fixed;
+
+  tr {
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+
+    &.unread {
+      font-weight: bold;
+    }
+
+    &.read {
+      background-color: rgba(243, 243, 243, .85);
+    }
+
+    &.selected {
+      background-color: rgb(255, 255, 204);
+    }
+  }
+
+  td {
+    padding: 5px;
+
+    .preview {
+      display: inline-block;
+      font-weight: normal;
+      color: #999;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+  }
+
+  td.select-cell {
+    width: 20px;
+  }
+
+  td.star-cell {
+    width: 20px;
+  }
+
+  td.name-cell {
+    width: 200px;
+  }
+
+  td.subject-cell {
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  td.sent-cell {
+    width: 200px;
+  }
+}
+
+.message-view {
+  .subject {
+    font-size: 20px;
+    padding-left: 10px;
+    padding-bottom: 5px;
+    margin-right: 30px;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 10px;
+  }
+
+  .envelope {
+    height: 50px;
+    float: left;
+    padding-left: 10px;
+
+    .gravatar {
+      width: 35px;
+      height: 35px;
+      float: left;
+      margin-right: 10px;
+    }
+
+    .info {
+      float: left;
+
+      .name {
+        display: block;
+      }
+
+      .email {
+        color: #666;
+        display: block;
+      }
+    }
+  }
+
+  .actions {
+    float: right;
+    margin-right: 30px;
+
+    .star {
+      position: relative;
+      top: 3px;
+      margin: 0 5px;
+    }
+
+    button {
+      border-radius: 2px;
+      background-color: #f5f5f5;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      color: #444;
+      height: 30px;
+      font-size: 16px;
+      padding: 0 15px;
+    }
+  }
+
+  .message {
+    clear: both;
+    padding-top: 10px;
+    padding-left: 10px;
   }
 }

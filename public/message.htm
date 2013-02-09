@@ -1,1 +1,18 @@
-Message // Message ID: {{messageId}}
+<div class='message-view'>
+  <div class='subject'>{{message.subject}}</div>
+  <div class='envelope'>
+    <img ng-src='{{gravatar(message.from.email)}}' class='gravatar'>
+    <div class='info'>
+      <span class='name'>{{message.from.name}}</span>
+      <span class='email'>{{message.from.email}}</span>
+    </div>
+  </div>
+  <div class='actions'>
+    <span>{{message.sent | date:'medium'}}</span>
+    <span class='star' ng-class='{lit: message.starred}' ng-click='message.starred = !message.starred; eat($event)'></span>
+    <button>Reply</button>
+  </div>
+
+  <div class='message' ng-bind-html-unsafe="message.body">
+  </div>
+</div>

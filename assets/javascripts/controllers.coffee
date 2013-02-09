@@ -5,10 +5,10 @@ app.controller 'ApplicationController', ($scope, $route, navigation) ->
   $scope.$on '$routeChangeSuccess', ->
     $scope.navigation.current = $route.current.name
 
-app.controller 'MessagesController', ($scope, navigation, messages) ->
+app.controller 'MessagesController', ($scope, $route, navigation, messages) ->
   $scope.name = 'MessagesController'
   $scope.navigation = navigation
-  $scope.messages = messages
+  $scope.messages = messages.in($route.current.name)
 
   $scope.eat = (event) ->
     event.stopPropagation()
@@ -17,12 +17,8 @@ app.controller 'ComposeController', ($scope) ->
   $scope.name = 'ComposeController'
 
 app.controller 'MessageController', ($scope, $routeParams, messages) ->
-  $scope.message = null
-
-  for message in messages
-    if message.id.toString() == $routeParams.messageId.toString()
-      $scope.message = message
-      $scope.message.read = true
+  $scope.message = messages.findById($routeParams.messageId)
+  $scope.message.read = true
 
   $scope.gravatar = (email) ->
     hash = MD5 email.trim()

@@ -10,13 +10,17 @@ app.config ($routeProvider, $locationProvider) ->
     controller: 'MessagesController'
     name: 'inbox'
   $routeProvider.when '/sent',
-    templateUrl: '/sent.htm'
+    templateUrl: '/inbox.htm'
     controller: 'MessagesController'
     name: 'sent'
   $routeProvider.when '/trash',
-    templateUrl: '/trash.htm'
+    templateUrl: '/inbox.htm'
     controller: 'MessagesController'
     name: 'trash'
+  $routeProvider.when '/starred',
+    templateUrl: '/inbox.htm'
+    controller: 'MessagesController'
+    name: 'starred'
   $routeProvider.when '/compose',
     templateUrl: '/compose.htm'
     controller: 'ComposeController'

@@ -1,20 +1,22 @@
 app = require './application.coffee'
 
-app.factory 'navigation', ($location) ->
+app.factory 'navigation', ($location, messages) ->
   to: (url) ->
-    console.log "WOOO", url
     $location.url url
   unreadIn: (label) ->
-    switch label
-      when 'inbox' then 14
-      when 'sent' then 0
-      when 'trash' then 0
+    msgs = messages.in(label).filter (msg) -> !msg.read
+    msgs.length
   current: ''
   pages: [
     {
       href: '/inbox'
       name: 'inbox'
       label: 'Inbox'
+    }
+    {
+      href: '/starred'
+      name: 'starred'
+      label: 'Starred'
     }
     {
       href: '/sent'
@@ -29,12 +31,14 @@ app.factory 'navigation', ($location) ->
   ]
 
 app.factory 'messages', ->
-  [
+  messages = [
     {
       id: 1
       read: false
       starred: true
       selected: false
+      sentLocally: false
+      deleted: false
       from: {
         name: 'Brandon Tilley'
         email: 'brandon@brandontilley.com'
@@ -44,3 +48,23 @@ app.factory 'messages', ->
       sent: new Date()
     }
   ]
+
+  api =
+    messages: messages
+    findById: (id) ->
+      for message in @messages
+        return message if message.id.toString() == id.toString()
+    in: (name) ->
+      if name == 'trash'
+        @messages.filter (msg) -> msg.deleted
+      else
+        messages = switch name
+          when 'inbox'
+            @messages.filter (msg) -> !msg.sentLocally
+          when 'starred'
+            @messages.filter (msg) -> msg.starred
+          when 'sent'
+            @messages.filter (msg) -> msg.sentLocally
+          else
+            []
+        messages.filter (msg) -> !msg.deleted
